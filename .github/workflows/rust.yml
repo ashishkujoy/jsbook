@@ -27,6 +27,7 @@ jobs:
         cache-name: mdbook_dependencies
       with:
         path: ~/.cargo
+        key: mdbook_dependencies
     - if: ${{ steps.mdbook_cache.outputs.cache-hit != 'true' }}
       name: Declare cache miss
       run: echo "Mdbook cache missed"
