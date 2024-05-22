@@ -20,6 +20,16 @@ jobs:
       run: cargo install mdbook
     - name: Install mdbook-repl
       run: cargo install mdbook-repl
+    - name: Cache dependencies
+      id: mdbook_cache
+      uses: actions/cache@v3
+      env:
+        cache-name: mdbook_dependencies
+      with:
+        path: ~/.cargo
+    - if: ${{ steps.mdbook_cache.outputs.cache-hit != 'true' }}
+      name: Declare cache miss
+      run: echo "Mdbook cache missed"
     - name: Build
       run: mdbook build
     - name: List Artifact
