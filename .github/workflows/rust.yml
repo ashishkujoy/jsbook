@@ -17,7 +17,11 @@ jobs:
     steps:
     - uses: actions/checkout@v4
     - name: Install mdbook
-      run: mkdir bin && curl -L https://github.com/rust-lang/mdBook/releases/download/v0.4.40/mdbook-v0.4.40-x86_64-unknown-linux-gnu.tar.gz | tar -xz --directory=bin && bin/mdbook build
+      run: mkdir bin && curl -L https://github.com/rust-lang/mdBook/releases/download/v0.4.40/mdbook-v0.4.40-x86_64-unknown-linux-gnu.tar.gz | tar -xz --directory=bin && bin/mdbook
+    - name: Install mdbook-repl
+      run: curl -L https://github.com/MR-Addict/mdbook-repl/releases/download/0.2.4/mdbook-repl-0.2.4-x86_64-unknown-linux-gnu.zip && unzip mdbook-repl-0.2.4-x86_64-unknown-linux-gnu.zip && cp mdbook-repl-0.2.4-x86_64-unknown-linux-gnu/mdbook-repl /bin
+    - name: Build Book
+      run: mdbook build
     # - name: Install mdbook_repl
     #   run: cargo install mdbook-repl       
     # - name: Cache dependencies
