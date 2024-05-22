@@ -18,22 +18,24 @@ jobs:
     - uses: actions/checkout@v4
     - name: Install mdbook
       run: mkdir bin \
-           curl -L https://github.com/rust-lang/mdBook/releases/download/v0.4.40/mdbook-v0.4.40-x86_64-unknown-linux-gnu.tar.gz | tar -xz --directory=bin \
-           bin/mdbook build
-    - name: Install mdbook_repl
-      run: cargo install mdbook-repl       
-    - name: Cache dependencies
-      id: mdbook_cache
-      uses: actions/cache@v3
-      env:
-        cache-name: mdbook_dependencies
-      with:
-        path: ~/.cargo
-        key: mdbook_dependencies
-    - if: ${{ steps.mdbook_cache.outputs.cache-hit != 'true' }}
-      name: Declare cache miss
-      run: echo "Mdbook cache missed"
-    - name: Build
-      run: mdbook build
-    - name: List Artifact
-      run: ls -lah book
+           wget https://github.com/rust-lang/mdBook/releases/download/v0.4.40/mdbook-v0.4.40-x86_64-unknown-linux-gnu.tar.gz \
+           ls -lah \
+    #        curl -L https://github.com/rust-lang/mdBook/releases/download/v0.4.40/mdbook-v0.4.40-x86_64-unknown-linux-gnu.tar.gz | tar -xz --directory=bin \
+    #        bin/mdbook build
+    # - name: Install mdbook_repl
+    #   run: cargo install mdbook-repl       
+    # - name: Cache dependencies
+    #   id: mdbook_cache
+    #   uses: actions/cache@v3
+    #   env:
+    #     cache-name: mdbook_dependencies
+    #   with:
+    #     path: ~/.cargo
+    #     key: mdbook_dependencies
+    # - if: ${{ steps.mdbook_cache.outputs.cache-hit != 'true' }}
+    #   name: Declare cache miss
+    #   run: echo "Mdbook cache missed"
+    # - name: Build
+    #   run: mdbook build
+    # - name: List Artifact
+    #   run: ls -lah book
