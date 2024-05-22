@@ -1,0 +1,26 @@
+name: Rust
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+env:
+  CARGO_TERM_COLOR: always
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v4
+    - name: Install mdbook
+      run: cargo install mdbook
+    - name: Install mdbook-repl
+      run: cargo install mdbook-repl
+    - name: Build
+      run: mdbook build
+    - name: List Artifact
+      run: ls -lah book
