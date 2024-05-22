@@ -20,7 +20,7 @@ jobs:
       run: |
           ls -lah ~
           mkdir bin
-          curl -sSL https://github.com/rust-lang/mdBook/releases/download/v0.4.40/mdbook-v0.4.40-x86_64-unknown-linux-gnu.tar.gz | tar -xz --directory=bin
+          curl -sSL https://github.com/rust-lang/mdBook/releases/download/v0.4.40/mdbook-v0.4.40-x86_64-unknown-linux-gnu.tar.gz | tar -xz --directory=~/.cargo/bin
     - name: Install mdbook-repl
       run: |
           curl -L https://github.com/MR-Addict/mdbook-repl/releases/download/0.2.4/mdbook-repl-0.2.4-x86_64-unknown-linux-gnu.zip > mdbook-repl.zip
